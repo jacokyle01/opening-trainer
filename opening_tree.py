@@ -4,9 +4,16 @@ class OpeningTree:
         self.ply = ply
         self.color = color
         self.parent = -1
+
         self.children = []
 
-        
+    def getTree(self, multiplier = 0):
+        indent = "  " * multiplier
+        tree = indent + self.ply + "\n"
+        for child in self.children:
+            tree += child.getTree(multiplier + 1)
+        return tree
+ 
     def __str__(self):
         return self.color + " played " + self.ply
 
